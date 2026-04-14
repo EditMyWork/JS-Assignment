@@ -1,16 +1,22 @@
 function isPalindrome(n) {
-  let s = String(n);
-  return s === s.split('').reverse().join('');
+  let original = n;
+  let reversed = 0;
+  while (n > 0) {
+    reversed = reversed * 10 + (n % 10);
+    n = Math.floor(n / 10);
+  }
+  return original === reversed;
 }
 
-let N = parseInt(prompt("Enter N:"));
-let K = parseInt(prompt("Enter K:"));
+let N = Number(prompt("Enter N:"));
+let K = Number(prompt("Enter K:"));
 
 let result = -1;
+
 for (let X = 0; X <= 100000; X++) {
-  if (isPalindrome(N + X) && (N + X) % K === 0) {
+  if (isPalindrome(N + X) === true && (N + X) % K === 0) {
     result = X;
-    break;
+    break; 
   }
 }
 

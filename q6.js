@@ -1,13 +1,23 @@
-let a = parseInt(prompt("Enter correct answers (a):"));
-let b = parseInt(prompt("Enter partial answers (b):"));
-let c = parseInt(prompt("Enter wrong answers (c):"));
+let a = Number(prompt("Enter correct answers:"));
+let b = Number(prompt("Enter partial answers:"));
+let c = Number(prompt("Enter wrong answers:"));
 
 let score = 3 * a + b - 2 * c;
 
-if (score < 0) score = 0;
-if (a + b + c > 50) score -= 10;
-if (score < 0) score = 0; // clamp again after subtraction
+if (score < 0) {
+  score = 0;
+}
 
-let status = score >= 60 ? "PASS" : "FAIL";
+if (a + b + c > 50) {
+  score = score - 10;
+}
+    
+if (score < 0) {
+  score = 0;
+}
 
-alert(score + ", " + status);
+if (score >= 60) {
+  alert(score + ", PASS");
+} else {
+  alert(score + ", FAIL");
+}

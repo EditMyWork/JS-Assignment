@@ -1,19 +1,26 @@
-let base = parseInt(prompt("Enter base:"));
-let distance = parseInt(prompt("Enter distance:"));
-let minutesLate = parseInt(prompt("Enter minutesLate:"));
-let seed = parseInt(prompt("Enter seed:"));
+let base = Number(prompt("Enter base:"));
+let distance = Number(prompt("Enter distance:"));
+let minutesLate = Number(prompt("Enter minutesLate:"));
+let seed = Number(prompt("Enter seed:"));
 
 let fare = base + 7 * distance;
 
-if (minutesLate > 15) fare += 20;
-if (distance > 10) fare += Math.floor(fare * 0.10);
+if (minutesLate > 15) {
+  fare = fare + 20;
+}
 
-if (seed % 2 !== 0)
-  fare -= seed;
-else
-  fare += seed;
+if (distance > 10) {
+  fare = fare + Math.floor(fare * 10 / 100);
+}
 
-// Round up to nearest multiple of 5
-fare = Math.ceil(fare / 5) * 5;
+if (seed % 2 !== 0) {
+  fare = fare - seed; 
+} else {
+  fare = fare + seed; 
+}
+
+if (fare % 5 !== 0) {
+  fare = fare + (5 - fare % 5);
+}
 
 alert(fare);

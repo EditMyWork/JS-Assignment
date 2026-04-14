@@ -1,17 +1,21 @@
-let N = parseInt(prompt("Enter N:"));
-let seed = parseInt(prompt("Enter seed:"));
+let N = Number(prompt("Enter N:"));
+let seed = Number(prompt("Enter seed:"));
 
 let current = N;
+
+
 for (let i = 0; i < 3; i++) {
-  if (current % 2 === 0)
+  if (current % 2 === 0) {
     current = current / 2 + seed;
-  else
+  } else {
     current = current * 3 - seed;
+  }
 }
 
-let middle = Math.floor((current / 10)) % 10;
+let middleDigit = Math.floor(current / 10) % 10;
 
-if (current >= 100 && current <= 999 && middle === seed)
+if (current >= 100 && current <= 999 && middleDigit === seed) {
   alert("YES, " + current);
-else
+} else {
   alert("NO, " + current);
+}
